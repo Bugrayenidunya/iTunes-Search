@@ -10,6 +10,8 @@ import Foundation
 // MARK: HomeInteractorInput
 protocol HomeInteractorInput {
     func sessionDidBegin()
+    func search(with term: String, limit: Int, mediaType: MediaType)
+    func update(viewModel: HomeViewModel)
 }
 
 // MARK: - HomeInteractorOutput
@@ -24,14 +26,25 @@ final class HomeInteractor: HomeInteractorInput {
     // MARK: Properties
     private let repository: HomeRepositoryInput
     
+    private var viewModel: HomeViewModel?
+    
     weak var output: HomeInteractorOutput?
     
+    // MARK: Init
     init(repository: HomeRepositoryInput) {
         self.repository = repository
     }
     
     func sessionDidBegin() {
         repository.makeInitialFetch()
+    }
+    
+    func search(with term: String, limit: Int, mediaType: MediaType) {
+        repository.search(with: term, limit: limit, mediaType: mediaType)
+    }
+    
+    func update(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
     }
 }
 
@@ -40,11 +53,29 @@ extension HomeInteractor: HomeRepositoryOutput {
     func home(_ repository: HomeRepositoryInput, didFetchMediaWith response: SearchResponseModel) {
         guard let results = response.results else { return }
         
-        let viewModel = HomeViewModel(
-            medias: results.compactMap({ $0 })
-        )
-        
-        output?.home(self, didConfigureMediaWith: viewModel)
+        if let viewModel = viewModel {
+            self.viewModel = viewModel.update(
+                selectedMediaType: viewModel.selectedMediaType,
+                medias: results.compactMap({ .init(mediaItem: $0) }),
+                limit: viewModel.limit,
+                pageCount: viewModel.pageCount,
+                maxPageCount: viewModel.maxPageCount,
+                searchTerm: viewModel.searchTerm
+            )
+            
+            output?.home(self, didConfigureMediaWith: self.viewModel!)
+        } else {
+            self.viewModel = HomeViewModel(
+                selectedMediaType: .all,
+                medias: results.compactMap({ .init(mediaItem: $0) }),
+                limit: 20,
+                pageCount: 1,
+                maxPageCount: 10,
+                searchTerm: .empty
+            )
+            
+            output?.home(self, didConfigureMediaWith: self.viewModel!)
+        }
     }
     
     func home(_ repository: HomeRepositoryInput, didFailMediaWith error: ApiError) {

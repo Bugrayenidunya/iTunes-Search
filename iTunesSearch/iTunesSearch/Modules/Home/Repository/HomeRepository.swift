@@ -10,6 +10,7 @@ import Foundation
 // MARK: - HomeRepositoryInput
 protocol HomeRepositoryInput {
     func makeInitialFetch()
+    func search(with term: String, limit: Int, mediaType: MediaType)
 }
 
 // MARK: - HomeRepositoryOutput
@@ -31,7 +32,23 @@ final class HomeRepository: HomeRepositoryInput {
     }
     
     func makeInitialFetch() {
-        let request = SearchRequestModel(searchTerm: "Pink Floyd", limit: String(50), mediaType: .all)
+        let request = SearchRequestModel(searchTerm: "Pink Floyd", limit: String(10), mediaType: .all)
+        
+        searchApi.search(request: request) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .failure(let error):
+                self.output?.home(self, didFailMediaWith: error)
+                
+            case .success(let response):
+                self.output?.home(self, didFetchMediaWith: response)
+            }
+        }
+    }
+    
+    func search(with term: String, limit: Int, mediaType: MediaType) {
+        let request = SearchRequestModel(searchTerm: term, limit: String(limit), mediaType: mediaType)
         
         searchApi.search(request: request) { [weak self] result in
             guard let self = self else { return }

@@ -38,6 +38,7 @@ final class HomeController: UIViewController {
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
         return searchBar
     }()
     
@@ -45,7 +46,7 @@ final class HomeController: UIViewController {
         let segmentItems = ["All", "Movies", "Musics", "Apps", "Books"]
         let segmentedControl = UISegmentedControl(items: segmentItems)
         segmentedControl.selectedSegmentIndex = 0
-        //control.addTarget(self, action: #selector(segmentedControl(_:)), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(segmentedControl(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentTintColor = .themeColor
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -92,6 +93,20 @@ final class HomeController: UIViewController {
 
 // MARK: - Helpers
 private extension HomeController {
+    @objc func fetchMedia(_ sender: UISearchBar) {
+        guard let searchTerm = sender.text else { return }
+        presenter.search(with: searchTerm)
+    }
+    
+    @objc
+    func segmentedControl(_ sender: UISegmentedControl) {
+        let selectedSegmentIndex = sender.selectedSegmentIndex
+        guard let mediaType = MediaType(segment: selectedSegmentIndex) else { return }
+        
+        collectionView.scrollToItem(at: .init(row: .zero, section: .zero), at: .centeredVertically, animated: true)
+        presenter.change(mediaType: mediaType)
+    }
+    
     /// Applies new data to dataSource
     func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
@@ -235,5 +250,24 @@ extension HomeController: HomeViewDelegate {
 
 // MARK: - UICollectionViewDelegate
 extension HomeController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        
+        guard let searchText = searchBar.searchTextField.text, searchText.count > 2,
+            indexPath.row ==  section.items.count - 1 else { return }
+
+        presenter.search(with: searchText)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension HomeController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count > 2 {
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(fetchMedia(_:)), object: searchBar)
+            perform(#selector(fetchMedia(_:)), with: searchBar, afterDelay: 0.75)
+        } else {
+            applySnapshot(animatingDifferences: false)
+        }
+    }
 }
