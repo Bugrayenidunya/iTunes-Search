@@ -10,13 +10,23 @@ import UIKit
 
 final class HomeBuilder {
     static func build() -> UINavigationController {
-        let interactor = HomeInteractor()
+        let urlSession = URLSession.shared
+        
+        let networkManager = NetworkManager(session: urlSession)
+        
+        let searchApi = SearchAPI(networkManager: networkManager)
+        
+        let repository = HomeRepository(searchApi: searchApi)
+        
+        let interactor = HomeInteractor(repository: repository)
         
         let presenter = HomePresenter(interactor: interactor)
         
         let controller = HomeController(presenter: presenter)
         
         presenter.view = controller
+        interactor.output = presenter
+        repository.output = interactor
         
         return .init(rootViewController: controller)
     }

@@ -27,5 +27,13 @@ final class HomePresenter: HomePresenterInput {
     
     func viewDidLoad() {
         view?.setupViews()
+        interactor.sessionDidBegin()
+    }
+}
+
+// MARK: - HomeInteractorOutput
+extension HomePresenter: HomeInteractorOutput {
+    func home(_ interactor: HomeInteractorInput, didConfigureMediaWith viewModel: HomeViewModel) {
+        view?.update(with: viewModel)
     }
 }

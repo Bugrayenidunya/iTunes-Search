@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Networking
 protocol Networking {
-    func request<T: Codable>(request: RequestModel, completion: @escaping (Result<[T], ApiError>) -> Void)
+    func request<T: Codable>(request: RequestModel, completion: @escaping (Result<T, ApiError>) -> Void)
 }
 
 // MARK: - NetowrkManager
@@ -29,7 +29,7 @@ final class NetworkManager: Networking {
     /// - Parameters:
     ///   - request:  Any model that confirms `RequestModel`
     ///   - completion: Escaping closure
-    func request<T: Codable>(request: RequestModel, completion: @escaping (Result<[T], ApiError>) -> Void) {
+    func request<T: Codable>(request: RequestModel, completion: @escaping (Result<T, ApiError>) -> Void) {
         LoadingManager.shared.show()
         
         guard let generatedRequest = request.generateRequest() else {
@@ -50,7 +50,7 @@ final class NetworkManager: Networking {
             guard let data = data else { return }
             
             do {
-                let result = try JSONDecoder().decode([T].self, from: data)
+                let result = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(result))
                 
             } catch {

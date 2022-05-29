@@ -10,6 +10,7 @@ import UIKit
 // MARK: HomeViewDelegate
 protocol HomeViewDelegate: AnyObject {
     func setupViews()
+    func update(with viewModel: HomeViewModel)
 }
 
 final class HomeController: UIViewController {
@@ -110,6 +111,8 @@ private extension HomeController {
                     return .init(frame: .zero)
                 }
                 
+                cell.configure(with: cellViewModel)
+                
                 return cell
             })
         
@@ -138,7 +141,7 @@ private extension HomeController {
             heightDimension: .fractionalHeight(Constant.half)
         )
         
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupDimension, subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupDimension, subitems: [item])
         
         return .init(section: generateSection(for: group))
     }
@@ -182,6 +185,13 @@ private extension HomeController {
 
 // MARK: - HomeViewDelegate
 extension HomeController: HomeViewDelegate {
+    func update(with viewModel: HomeViewModel) {
+        DispatchQueue.main.async {
+            self.sections = [Section(title: "Result", items: viewModel.medias)]
+            self.applySnapshot(animatingDifferences: true)
+        }
+    }
+    
     func setupViews() {
         navigationItem.title = "iTunes Search"
         view.backgroundColor = .white
@@ -215,7 +225,10 @@ extension HomeController: HomeViewDelegate {
             leading: view.leadingAnchor,
             bottom: view.bottomAnchor,
             trailing: view.trailingAnchor,
-            topConstraint: 16
+            topConstraint: 16,
+            leadingConstraint: .zero,
+            bottomConstraint: .zero,
+            trailingConstraint: .zero
         )
     }
 }

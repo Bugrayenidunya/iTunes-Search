@@ -8,5 +8,9 @@
 import Foundation
 
 struct HomeViewModel {
+    let medias: [HomeCollectionViewCellViewModel]
     
+    init(medias: [MediaItem]) {
+        self.medias = medias.compactMap({ HomeCollectionViewCellViewModel(mediaItem: $0) })
+    }
 }
