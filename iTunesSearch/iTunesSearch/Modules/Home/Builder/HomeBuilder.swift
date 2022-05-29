@@ -10,6 +10,14 @@ import UIKit
 
 final class HomeBuilder {
     static func build() -> UINavigationController {
-        .init(rootViewController: HomeController())
+        let interactor = HomeInteractor()
+        
+        let presenter = HomePresenter(interactor: interactor)
+        
+        let controller = HomeController(presenter: presenter)
+        
+        presenter.view = controller
+        
+        return .init(rootViewController: controller)
     }
 }

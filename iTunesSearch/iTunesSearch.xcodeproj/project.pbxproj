@@ -18,6 +18,14 @@
 		136FB55A28434F2F00696DE3 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB55928434F2F00696DE3 /* HomeRepository.swift */; };
 		136FB55C28434F3700696DE3 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB55B28434F3700696DE3 /* HomeWireframe.swift */; };
 		136FB55E28434F4100696DE3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB55D28434F4100696DE3 /* HomeViewModel.swift */; };
+		136FB5642843541800696DE3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5632843541800696DE3 /* UIColor+Extension.swift */; };
+		136FB5662843543600696DE3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5652843543600696DE3 /* Constants.swift */; };
+		136FB5682843545300696DE3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5672843545300696DE3 /* UIColor.swift */; };
+		136FB56D284361A300696DE3 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB56C284361A300696DE3 /* HomeCollectionViewCell.swift */; };
+		136FB56F284361D500696DE3 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB56E284361D500696DE3 /* SectionHeaderReusableView.swift */; };
+		136FB571284361FB00696DE3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB570284361FB00696DE3 /* UIView+Extension.swift */; };
+		136FB5732843630100696DE3 /* HomeCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5722843630100696DE3 /* HomeCollectionViewCellViewModel.swift */; };
+		136FB5752843636900696DE3 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5742843636900696DE3 /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +42,14 @@
 		136FB55928434F2F00696DE3 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		136FB55B28434F3700696DE3 /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
 		136FB55D28434F4100696DE3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		136FB5632843541800696DE3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		136FB5652843543600696DE3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		136FB5672843545300696DE3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		136FB56C284361A300696DE3 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		136FB56E284361D500696DE3 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
+		136FB570284361FB00696DE3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		136FB5722843630100696DE3 /* HomeCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		136FB5742843636900696DE3 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +85,7 @@
 				135D4B2F2842BB980054F26F /* Modules */,
 				135D4B2E2842BB8F0054F26F /* Resources */,
 				135D4B2D2842BB7B0054F26F /* Supports */,
+				136FB55F2843540000696DE3 /* Utilities */,
 			);
 			path = iTunesSearch;
 			sourceTree = "<group>";
@@ -126,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				135D4B322842BBD20054F26F /* HomeController.swift */,
+				136FB5692843617600696DE3 /* View */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +194,60 @@
 				136FB55728434F2800696DE3 /* HomeBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		136FB55F2843540000696DE3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5602843540300696DE3 /* Constants */,
+				136FB5622843540D00696DE3 /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		136FB5602843540300696DE3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5652843543600696DE3 /* Constants.swift */,
+				136FB5672843545300696DE3 /* UIColor.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		136FB5622843540D00696DE3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5632843541800696DE3 /* UIColor+Extension.swift */,
+				136FB570284361FB00696DE3 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		136FB5692843617600696DE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				136FB56A2843618300696DE3 /* HomeCollectionViewCell */,
+				136FB56B2843618D00696DE3 /* SectionHeaderReusableView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		136FB56A2843618300696DE3 /* HomeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				136FB56C284361A300696DE3 /* HomeCollectionViewCell.swift */,
+				136FB5722843630100696DE3 /* HomeCollectionViewCellViewModel.swift */,
+			);
+			path = HomeCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		136FB56B2843618D00696DE3 /* SectionHeaderReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5742843636900696DE3 /* Section.swift */,
+				136FB56E284361D500696DE3 /* SectionHeaderReusableView.swift */,
+			);
+			path = SectionHeaderReusableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,15 +320,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136FB5752843636900696DE3 /* Section.swift in Sources */,
 				136FB55828434F2800696DE3 /* HomeBuilder.swift in Sources */,
+				136FB5682843545300696DE3 /* UIColor.swift in Sources */,
+				136FB5662843543600696DE3 /* Constants.swift in Sources */,
+				136FB571284361FB00696DE3 /* UIView+Extension.swift in Sources */,
 				136FB55E28434F4100696DE3 /* HomeViewModel.swift in Sources */,
 				136FB55C28434F3700696DE3 /* HomeWireframe.swift in Sources */,
+				136FB56D284361A300696DE3 /* HomeCollectionViewCell.swift in Sources */,
 				136FB55A28434F2F00696DE3 /* HomeRepository.swift in Sources */,
 				135D4B1A2842BA0B0054F26F /* AppDelegate.swift in Sources */,
 				135D4B1C2842BA0B0054F26F /* SceneDelegate.swift in Sources */,
 				135D4B332842BBD20054F26F /* HomeController.swift in Sources */,
+				136FB56F284361D500696DE3 /* SectionHeaderReusableView.swift in Sources */,
+				136FB5732843630100696DE3 /* HomeCollectionViewCellViewModel.swift in Sources */,
 				136FB55628434F2200696DE3 /* HomeInteractor.swift in Sources */,
 				136FB55428434F1C00696DE3 /* HomePresenter.swift in Sources */,
+				136FB5642843541800696DE3 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
