@@ -20,4 +20,6 @@ protocol DetailRepositoryOutput: AnyObject {
 // MARK: - DetailRepository
 final class DetailRepository: DetailRepositoryInput {
     
+    // MARK: Properties
+    weak var output: DetailRepositoryOutput?
 }

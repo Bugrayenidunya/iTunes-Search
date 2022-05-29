@@ -13,6 +13,7 @@ protocol HomeViewDelegate: AnyObject {
     func update(with viewModel: HomeViewModel)
 }
 
+// MARK: - HomeController
 final class HomeController: UIViewController {
     
     // MARK: Typealias
@@ -257,6 +258,10 @@ extension HomeController: UICollectionViewDelegate {
             indexPath.row ==  section.items.count - 1 else { return }
 
         presenter.search(with: searchText)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItem(at: indexPath)
     }
 }
 

@@ -13,12 +13,14 @@ struct HomeCollectionViewCellViewModel: Hashable {
     let collectionPrice: String
     let collectionName: String
     let releaseDate: String
+    let description: String
     
     init(mediaItem: MediaItem) {
-        self.id = UUID()
-        self.artworkUrl = URL(string: mediaItem.artworkUrl100 ?? .empty)
-        self.collectionPrice = "\(mediaItem.currency ?? .empty) \(mediaItem.collectionPrice ?? .zero)"
-        self.collectionName = mediaItem.collectionName ?? .empty
-        self.releaseDate = mediaItem.releaseDate?.formatIsoStringToReadableDate() ?? .empty
+        id = UUID()
+        artworkUrl = URL(string: mediaItem.artworkUrl100 ?? .empty)
+        collectionPrice = "\(mediaItem.currency ?? .empty) \(mediaItem.collectionPrice ?? .zero)"
+        collectionName = mediaItem.collectionName ?? .empty
+        releaseDate = mediaItem.releaseDate?.formatIsoStringToReadableDate() ?? .empty
+        description = mediaItem.longDescription ?? .empty
     }
 }

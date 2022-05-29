@@ -12,6 +12,7 @@ protocol HomePresenterInput {
     func viewDidLoad()
     func search(with term: String)
     func change(mediaType: MediaType)
+    func didSelectItem(at indexPath: IndexPath)
 }
 
 // MARK: - HomePresenter
@@ -19,6 +20,7 @@ final class HomePresenter: HomePresenterInput {
     
     // MARK: Properties
     private let interactor: HomeInteractorInput
+    private let wireframe: HomeWireframeRoutable
     private var viewModel: HomeViewModel?
     
     weak var view: HomeViewDelegate?
@@ -26,8 +28,10 @@ final class HomePresenter: HomePresenterInput {
     private var newLimit: Int = .zero
     
     // MARK: Init
-    init(interactor: HomeInteractorInput) {
+    init(interactor: HomeInteractorInput,
+         wireframe: HomeWireframeRoutable) {
         self.interactor = interactor
+        self.wireframe = wireframe
     }
     
     func viewDidLoad() {
@@ -59,6 +63,15 @@ final class HomePresenter: HomePresenterInput {
         self.viewModel = viewModel
         interactor.update(viewModel: self.viewModel!)
         interactor.search(with: viewModel.searchTerm, limit: viewModel.limit, mediaType: viewModel.selectedMediaType)
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
+
+        let itemViewModel = viewModel.medias[indexPath.row]
+        let detailViewModel = DetailViewModel(viewModel: itemViewModel)
+        
+        wireframe.navigateToDetail(with: detailViewModel)
     }
 }
 

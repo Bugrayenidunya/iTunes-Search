@@ -10,6 +10,8 @@ import UIKit
 
 final class HomeBuilder {
     static func build() -> UINavigationController {
+        let wireframe = HomeWireframe()
+        
         let urlSession = URLSession.shared
         
         let networkManager = NetworkManager(session: urlSession)
@@ -20,14 +22,17 @@ final class HomeBuilder {
         
         let interactor = HomeInteractor(repository: repository)
         
-        let presenter = HomePresenter(interactor: interactor)
+        let presenter = HomePresenter(interactor: interactor, wireframe: wireframe)
         
         let controller = HomeController(presenter: presenter)
+        
+        let navigationController = UINavigationController(rootViewController: controller)
         
         presenter.view = controller
         interactor.output = presenter
         repository.output = interactor
+        wireframe.navigationController = navigationController
         
-        return .init(rootViewController: controller)
+        return navigationController
     }
 }
