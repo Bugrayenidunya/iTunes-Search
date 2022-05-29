@@ -26,6 +26,13 @@
 		136FB571284361FB00696DE3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB570284361FB00696DE3 /* UIView+Extension.swift */; };
 		136FB5732843630100696DE3 /* HomeCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5722843630100696DE3 /* HomeCollectionViewCellViewModel.swift */; };
 		136FB5752843636900696DE3 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5742843636900696DE3 /* Section.swift */; };
+		136FB5792843754A00696DE3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5782843754A00696DE3 /* NetworkManager.swift */; };
+		136FB57C2843756E00696DE3 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB57B2843756E00696DE3 /* RequestModel.swift */; };
+		136FB57E2843758200696DE3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB57D2843758200696DE3 /* API.swift */; };
+		136FB580284375CB00696DE3 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB57F284375CB00696DE3 /* RequestMethod.swift */; };
+		136FB582284375E800696DE3 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB581284375E800696DE3 /* ApiError.swift */; };
+		136FB5852843761300696DE3 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5842843761300696DE3 /* LoadingManager.swift */; };
+		136FB5892843766700696DE3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5882843766700696DE3 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +57,13 @@
 		136FB570284361FB00696DE3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		136FB5722843630100696DE3 /* HomeCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		136FB5742843636900696DE3 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		136FB5782843754A00696DE3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		136FB57B2843756E00696DE3 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
+		136FB57D2843758200696DE3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		136FB57F284375CB00696DE3 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		136FB581284375E800696DE3 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		136FB5842843761300696DE3 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
+		136FB5882843766700696DE3 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,8 @@
 		135D4B182842BA0B0054F26F /* iTunesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				136FB57A2843756400696DE3 /* Models */,
+				136FB5762843753700696DE3 /* Managers */,
 				135D4B2F2842BB980054F26F /* Modules */,
 				135D4B2E2842BB8F0054F26F /* Resources */,
 				135D4B2D2842BB7B0054F26F /* Supports */,
@@ -210,6 +226,7 @@
 			children = (
 				136FB5652843543600696DE3 /* Constants.swift */,
 				136FB5672843545300696DE3 /* UIColor.swift */,
+				136FB57D2843758200696DE3 /* API.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -217,6 +234,7 @@
 		136FB5622843540D00696DE3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				136FB5882843766700696DE3 /* String+Extension.swift */,
 				136FB5632843541800696DE3 /* UIColor+Extension.swift */,
 				136FB570284361FB00696DE3 /* UIView+Extension.swift */,
 			);
@@ -248,6 +266,57 @@
 				136FB56E284361D500696DE3 /* SectionHeaderReusableView.swift */,
 			);
 			path = SectionHeaderReusableView;
+			sourceTree = "<group>";
+		};
+		136FB5762843753700696DE3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5832843760100696DE3 /* LoadingManager */,
+				136FB5772843753E00696DE3 /* NetworkManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		136FB5772843753E00696DE3 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5782843754A00696DE3 /* NetworkManager.swift */,
+				136FB5862843763B00696DE3 /* ApiError */,
+				136FB5872843764300696DE3 /* RequestMethod */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		136FB57A2843756400696DE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				136FB57B2843756E00696DE3 /* RequestModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		136FB5832843760100696DE3 /* LoadingManager */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5842843761300696DE3 /* LoadingManager.swift */,
+			);
+			path = LoadingManager;
+			sourceTree = "<group>";
+		};
+		136FB5862843763B00696DE3 /* ApiError */ = {
+			isa = PBXGroup;
+			children = (
+				136FB581284375E800696DE3 /* ApiError.swift */,
+			);
+			path = ApiError;
+			sourceTree = "<group>";
+		};
+		136FB5872843764300696DE3 /* RequestMethod */ = {
+			isa = PBXGroup;
+			children = (
+				136FB57F284375CB00696DE3 /* RequestMethod.swift */,
+			);
+			path = RequestMethod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,20 +389,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136FB5792843754A00696DE3 /* NetworkManager.swift in Sources */,
 				136FB5752843636900696DE3 /* Section.swift in Sources */,
 				136FB55828434F2800696DE3 /* HomeBuilder.swift in Sources */,
 				136FB5682843545300696DE3 /* UIColor.swift in Sources */,
+				136FB580284375CB00696DE3 /* RequestMethod.swift in Sources */,
+				136FB57C2843756E00696DE3 /* RequestModel.swift in Sources */,
 				136FB5662843543600696DE3 /* Constants.swift in Sources */,
 				136FB571284361FB00696DE3 /* UIView+Extension.swift in Sources */,
 				136FB55E28434F4100696DE3 /* HomeViewModel.swift in Sources */,
 				136FB55C28434F3700696DE3 /* HomeWireframe.swift in Sources */,
 				136FB56D284361A300696DE3 /* HomeCollectionViewCell.swift in Sources */,
+				136FB582284375E800696DE3 /* ApiError.swift in Sources */,
 				136FB55A28434F2F00696DE3 /* HomeRepository.swift in Sources */,
 				135D4B1A2842BA0B0054F26F /* AppDelegate.swift in Sources */,
 				135D4B1C2842BA0B0054F26F /* SceneDelegate.swift in Sources */,
 				135D4B332842BBD20054F26F /* HomeController.swift in Sources */,
+				136FB5892843766700696DE3 /* String+Extension.swift in Sources */,
+				136FB57E2843758200696DE3 /* API.swift in Sources */,
 				136FB56F284361D500696DE3 /* SectionHeaderReusableView.swift in Sources */,
 				136FB5732843630100696DE3 /* HomeCollectionViewCellViewModel.swift in Sources */,
+				136FB5852843761300696DE3 /* LoadingManager.swift in Sources */,
 				136FB55628434F2200696DE3 /* HomeInteractor.swift in Sources */,
 				136FB55428434F1C00696DE3 /* HomePresenter.swift in Sources */,
 				136FB5642843541800696DE3 /* UIColor+Extension.swift in Sources */,
