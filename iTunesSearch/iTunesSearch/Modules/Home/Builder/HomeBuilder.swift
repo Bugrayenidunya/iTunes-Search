@@ -5,12 +5,13 @@
 //  Created by Enes Buğra Yenidünya on 29.05.2022.
 //
 
-import Foundation
 import UIKit
 
 final class HomeBuilder {
     static func build() -> UINavigationController {
         let wireframe = HomeWireframe()
+        
+        let alertManager = AlertManager.shared
         
         let urlSession = URLSession.shared
         
@@ -20,7 +21,7 @@ final class HomeBuilder {
         
         let repository = HomeRepository(searchApi: searchApi)
         
-        let interactor = HomeInteractor(repository: repository)
+        let interactor = HomeInteractor(repository: repository, alertManager: alertManager)
         
         let presenter = HomePresenter(interactor: interactor, wireframe: wireframe)
         
@@ -32,6 +33,7 @@ final class HomeBuilder {
         interactor.output = presenter
         repository.output = interactor
         wireframe.navigationController = navigationController
+        alertManager.controller = controller
         
         return navigationController
     }

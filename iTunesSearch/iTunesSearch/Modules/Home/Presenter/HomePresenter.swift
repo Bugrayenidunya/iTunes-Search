@@ -101,4 +101,8 @@ extension HomePresenter: HomeInteractorOutput {
     func home(_ interactor: HomeInteractorInput, didConfigureMediaWith viewModel: HomeViewModel) {
         update(viewModel: viewModel)
     }
+    
+    func home(_ interactor: HomeInteractorInput, didConfigureErrorWith error: ApiError) {
+        
+    }
 }

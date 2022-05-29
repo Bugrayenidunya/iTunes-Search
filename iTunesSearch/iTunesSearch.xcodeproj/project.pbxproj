@@ -45,6 +45,7 @@
 		136FB5AB2843E3C000696DE3 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5AA2843E3C000696DE3 /* DetailController.swift */; };
 		136FB5AD2843E3C600696DE3 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5AC2843E3C600696DE3 /* DetailViewModel.swift */; };
 		136FB5AF2843E3CE00696DE3 /* DetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5AE2843E3CE00696DE3 /* DetailWireframe.swift */; };
+		136FB5B22843FC1C00696DE3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136FB5B12843FC1C00696DE3 /* AlertManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		136FB5AA2843E3C000696DE3 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		136FB5AC2843E3C600696DE3 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		136FB5AE2843E3CE00696DE3 /* DetailWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWireframe.swift; sourceTree = "<group>"; };
+		136FB5B12843FC1C00696DE3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 		136FB5762843753700696DE3 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				136FB5B02843FC1400696DE3 /* AlertManager */,
 				136FB5832843760100696DE3 /* LoadingManager */,
 				136FB5772843753E00696DE3 /* NetworkManager */,
 			);
@@ -467,6 +470,14 @@
 			path = Wireframe;
 			sourceTree = "<group>";
 		};
+		136FB5B02843FC1400696DE3 /* AlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				136FB5B12843FC1C00696DE3 /* AlertManager.swift */,
+			);
+			path = AlertManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -549,6 +560,7 @@
 				136FB55E28434F4100696DE3 /* HomeViewModel.swift in Sources */,
 				136FB5A52843E3A200696DE3 /* DetailInteractor.swift in Sources */,
 				136FB55C28434F3700696DE3 /* HomeWireframe.swift in Sources */,
+				136FB5B22843FC1C00696DE3 /* AlertManager.swift in Sources */,
 				136FB58D2843797800696DE3 /* MediaType.swift in Sources */,
 				136FB56D284361A300696DE3 /* HomeCollectionViewCell.swift in Sources */,
 				136FB582284375E800696DE3 /* ApiError.swift in Sources */,

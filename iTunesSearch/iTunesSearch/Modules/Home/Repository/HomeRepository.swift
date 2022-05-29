@@ -58,6 +58,11 @@ final class HomeRepository: HomeRepositoryInput {
                 self.output?.home(self, didFailMediaWith: error)
                 
             case .success(let response):
+                guard response.resultCount ?? .zero > 0 else {
+                    self.output?.home(self, didFailMediaWith: .notFound)
+                    return
+                }
+                
                 self.output?.home(self, didFetchMediaWith: response)
             }
         }
